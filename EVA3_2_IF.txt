@@ -1,0 +1,127 @@
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| powertest          |
+| sakila             |
+| sys                |
+| tbd_e2             |
+| world              |
++--------------------+
+9 rows in set (0.0037 sec)
+ MySQL  localhost:3306 ssl  SQL > create data base tbd_e3
+                               -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'data base tbd_e3' at line 1
+ MySQL  localhost:3306 ssl  SQL > create database tbd_e3 ;
+Query OK, 1 row affected (0.0175 sec)
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(8, 10);
++-------------------------+
+| comparar_numeros(8, 10) |
++-------------------------+
+| MENOR                   |
++-------------------------+
+1 row in set (0.0061 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(10, 8);
++-------------------------+
+| comparar_numeros(10, 8) |
++-------------------------+
+| MAYOR                   |
++-------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select comparar_numeros(8, 8);
++------------------------+
+| comparar_numeros(8, 8) |
++------------------------+
+| IGUAL                  |
++------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select mod(5, 3);
++-----------+
+| mod(5, 3) |
++-----------+
+|         2 |
++-----------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select es_par(11);
++------------+
+| es_par(11) |
++------------+
+| ES IMPAR   |
++------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select es_par(10);
++------------+
+| es_par(10) |
++------------+
+| ES PAR     |
++------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select dia_semana(7);
++---------------+
+| dia_semana(7) |
++---------------+
+| SABADO        |
++---------------+
+1 row in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select dia_semana(5);
++---------------+
+| dia_semana(5) |
++---------------+
+| JUEVES        |
++---------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select dia_semana(11);
++----------------+
+| dia_semana(11) |
++----------------+
+| NO VALIDO      |
++----------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT conversion_temp(1, 25);
+ERROR: 1241 (21000): Operand should contain 1 column(s)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT conversion_temp(2, 25);
+ERROR: 1241 (21000): Operand should contain 1 column(s)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT conversion_temp(2, 25);
++------------------------+
+| conversion_temp(2, 25) |
++------------------------+
+| 77.0 °F                |
++------------------------+
+1 row in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT conversion_temp(1, 10);
++------------------------+
+| conversion_temp(1, 10) |
++------------------------+
+| 283 K                  |
++------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT conversion_temp(3, 200);
++-------------------------+
+| conversion_temp(3, 200) |
++-------------------------+
+| -73 °C                  |
++-------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
