@@ -1,0 +1,114 @@
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 11
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(5)
+                                       -> ;
+ERROR: 1305 (42000): FUNCTION tbd_e3.sumatoria_loop does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(5);
++-------------------+
+| sumatoria_loop(5) |
++-------------------+
+|                15 |
++-------------------+
+1 row in set (0.0046 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(10);
++--------------------+
+| sumatoria_loop(10) |
++--------------------+
+|                 55 |
++--------------------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(10);4
++--------------------+
+| sumatoria_loop(10) |
++--------------------+
+|                 55 |
++--------------------+
+1 row in set (0.0006 sec)
+                                       -> select sumatoria_loop(14);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '4
+select sumatoria_loop(14)' at line 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_loop(14);
++--------------------+
+| sumatoria_loop(14) |
++--------------------+
+|                105 |
++--------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(5);
+ERROR: 1305 (42000): FUNCTION tbd_e3.sumatoria_while does not exist
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(5);
++--------------------+
+| sumatoria_while(5) |
++--------------------+
+|                 15 |
++--------------------+
+1 row in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_while(10);
++---------------------+
+| sumatoria_while(10) |
++---------------------+
+|                  55 |
++---------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(5);
++---------------------+
+| sumatoria_repeat(5) |
++---------------------+
+|                  15 |
++---------------------+
+1 row in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select sumatoria_repeat(10);
++----------------------+
+| sumatoria_repeat(10) |
++----------------------+
+|                   55 |
++----------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potenciaLoop(2)
+                                       -> ;
+ERROR: 1318 (42000): Incorrect number of arguments for FUNCTION tbd_e3.calcular_potenciaLoop; expected 2, got 1
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potenciaLoop(2, 3) ;
++-----------------------------+
+| calcular_potenciaLoop(2, 3) |
++-----------------------------+
+|                           8 |
++-----------------------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potenciaLoop(2, 8) ;
++-----------------------------+
+| calcular_potenciaLoop(2, 8) |
++-----------------------------+
+|                         256 |
++-----------------------------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potenciaWhile(2, 8) ;
++------------------------------+
+| calcular_potenciaWhile(2, 8) |
++------------------------------+
+|                          256 |
++------------------------------+
+1 row in set (0.0013 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select calcular_potenciaRepeat(2, 8) ;
++-------------------------------+
+| calcular_potenciaRepeat(2, 8) |
++-------------------------------+
+|                           256 |
++-------------------------------+
+1 row in set (0.0009 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
