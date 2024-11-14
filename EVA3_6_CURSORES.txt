@@ -1,0 +1,91 @@
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 10
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table prueba(id int key not null);
+Query OK, 0 rows affected (0.0388 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc prueba;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.0016 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
++-------------------------------+
+| Mensaje                       |
++-------------------------------+
+| Clave insertada correctamente |
++-------------------------------+
+1 row in set (0.0170 sec)
+
+Query OK, 0 rows affected (0.0170 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > call insertar_prueba(1);
++------------------------+
+| Mensaje                |
++------------------------+
+| Error: clave duplicada |
++------------------------+
+1 row in set (0.0027 sec)
+
+Query OK, 0 rows affected (0.0027 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > show tables;
++------------------+
+| Tables_in_tbd_e3 |
++------------------+
+| productos        |
+| prueba           |
++------------------+
+2 rows in set (0.0024 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > use empresa;
+Default schema set to `empresa`.
+Fetching global names, object names from `empresa` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa  SQL > show tables;
++-------------------+
+| Tables_in_empresa |
++-------------------+
+| countries         |
+| departments       |
+| employees         |
+| job_history       |
+| jobs              |
+| locations         |
+| prueba            |
+| regions           |
++-------------------+
+8 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > desc countries;
++--------------+---------------+------+-----+---------+-------+
+| Field        | Type          | Null | Key | Default | Extra |
++--------------+---------------+------+-----+---------+-------+
+| COUNTRY_ID   | varchar(2)    | NO   | PRI | NULL    |       |
+| COUNTRY_NAME | varchar(40)   | YES  |     | NULL    |       |
+| REGION_ID    | decimal(10,0) | YES  | MUL | NULL    |       |
++--------------+---------------+------+-----+---------+-------+
+3 rows in set (0.0017 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > set @valor = 0;
+Query OK, 0 rows affected (0.0027 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > call contar_paises(@valor);
+Query OK, 0 rows affected (0.0149 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select @valor;
++--------+
+| @valor |
++--------+
+|     28 |
++--------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL >
