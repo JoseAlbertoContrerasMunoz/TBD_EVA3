@@ -1,0 +1,106 @@
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| empresa            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| powertest          |
+| sakila             |
+| sys                |
+| tbd_e2             |
+| tbd_e3             |
+| world              |
++--------------------+
+10 rows in set (0.0036 sec)
+ MySQL  localhost:3306 ssl  SQL > use empresa;
+Default schema set to `empresa`.
+Fetching global names, object names from `empresa` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  empresa  SQL > show tables;
++-------------------+
+| Tables_in_empresa |
++-------------------+
+| countries         |
+| departments       |
+| employees         |
+| job_history       |
+| jobs              |
+| locations         |
+| prueba            |
+| regions           |
++-------------------+
+8 rows in set (0.0021 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > CREATE TABLE personas (
+                                        ->     id INT AUTO_INCREMENT PRIMARY KEY,
+                                        ->     nombre VARCHAR(255) NOT NULL,
+                                        ->     apellido_pat VARCHAR(255) NOT NULL,
+                                        ->     apellido_mat VARCHAR(255),
+                                        ->     fecha_nac DATE,
+                                        ->     clave_rfc VARCHAR(255)
+                                        -> );
+Query OK, 0 rows affected (0.0459 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > KDKMASK
+                                        -> ^C
+ MySQL  localhost:3306 ssl  empresa  SQL > desc personas;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| nombre       | varchar(255) | NO   |     | NULL    |                |
+| apellido_pat | varchar(255) | NO   |     | NULL    |                |
+| apellido_mat | varchar(255) | YES  |     | NULL    |                |
+| fecha_nac    | date         | YES  |     | NULL    |                |
+| clave_rfc    | varchar(255) | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.0028 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > INSERT INTO personas (nombre, apellido_pat, apellido_mat, fecha_nac) VALUES ('Juan', 'Pérez', 'Gómez', '1990-05-10'), ('María', 'García', 'López', '1985-12-22'), ('Pedro', 'Rodríguez', NULL, '1998-08-15'),  ('Ana', 'Martínez', 'Sánchez', '2001-03-07'), ('Luis', 'Hernández', 'Ramírez', '1978-11-30');
+Query OK, 5 rows affected (0.0100 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  empresa  SQL > select * from personas;
++----+--------+--------------+--------------+------------+-----------+
+| id | nombre | apellido_pat | apellido_mat | fecha_nac  | clave_rfc |
++----+--------+--------------+--------------+------------+-----------+
+|  1 | Juan   | Pérez        | Gómez        | 1990-05-10 | NULL      |
+|  2 | María  | García       | López        | 1985-12-22 | NULL      |
+|  3 | Pedro  | Rodríguez    | NULL         | 1998-08-15 | NULL      |
+|  4 | Ana    | Martínez     | Sánchez      | 2001-03-07 | NULL      |
+|  5 | Luis   | Hernández    | Ramírez      | 1978-11-30 | NULL      |
++----+--------+--------------+--------------+------------+-----------+
+ MySQL  localhost:3306 ssl  empresa  SQL > SELECT generar_rfc('Juan', 'Perez', 'Jolote', '1975-11-23');
++------------------------------------------------------+
+| generar_rfc('Juan', 'Perez', 'Jolote', '1975-11-23') |
++------------------------------------------------------+
+| PEJJ19751123                                         |
++------------------------------------------------------+
+1 row in set (0.0014 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > call actualizar_rfc ;
+Query OK, 0 rows affected (0.0327 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL > select * from personas;
++----+--------+--------------+--------------+------------+--------------+
+| id | nombre | apellido_pat | apellido_mat | fecha_nac  | clave_rfc    |
++----+--------+--------------+--------------+------------+--------------+
+|  1 | Juan   | Perez        | Jolote       | 1975-11-23 | PEJJ19751123 |
+|  2 | Maria  | Garcia       | Lopez        | 1980-05-12 | GALM19800512 |
+|  3 | Pedro  | Sanchez      | NULL         | 1992-08-01 | SAXP19920801 |
+|  4 | Ana    | Martinez     | Gomez        | 1978-03-15 | MAGA19780315 |
+|  5 | Luis   | Rodriguez    | Palomino     | 1985-09-20 | ROPL19850920 |
++----+--------+--------------+--------------+------------+--------------+
+5 rows in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  empresa  SQL >
