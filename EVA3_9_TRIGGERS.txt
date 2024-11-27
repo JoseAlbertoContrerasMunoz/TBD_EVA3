@@ -1,0 +1,226 @@
+EVA3_9_TRIGGERS
+
+MySQL Shell 8.0.38
+
+Copyright (c) 2016, 2024, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 12
+Server version: 8.0.39 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd_e3;
+Default schema set to `tbd_e3`.
+Fetching global names, object names from `tbd_e3` for auto-completion... Press ^C to stop.
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > show tables;
++------------------+
+| Tables_in_tbd_e3 |
++------------------+
+| personas         |
+| productos        |
+| prueba           |
++------------------+
+3 rows in set (0.0018 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc prueba;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | NO   | PRI | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.0023 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table pruebas(id int, nombre varchar(50));
+Query OK, 0 rows affected (0.0237 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc pruebas;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0034 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SET @mensaje = '';
+Query OK, 0 rows affected (0.0029 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT @mensaje;
++----------+
+| @mensaje |
++----------+
+|          |
++----------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > INSERT INTO pruebas value(5, "HOLA MUNDO");
+Query OK, 1 row affected (0.0055 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT @mensaje;
++--------------------------+
+| @mensaje                 |
++--------------------------+
+| DATO INSERTADO CON EXITO |
++--------------------------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > set @cont = 0;
+Query OK, 0 rows affected (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|     0 |
++-------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc productos;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0020 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0065 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|     0 |
++-------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0056 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0047 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0043 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|     0 |
++-------+
+1 row in set (0.0005 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0225 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|     1 |
++-------+
+1 row in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0054 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0055 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0039 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0052 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0054 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0044 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0043 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0041 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0058 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into productos value(10, "papas");
+Query OK, 1 row affected (0.0038 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select @cont;
++-------+
+| @cont |
++-------+
+|    11 |
++-------+
+1 row in set (0.0004 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from pruebas;
++----+------------+
+| id | nombre     |
++----+------------+
+|  5 | HOLA MUNDO |
++----+------------+
+1 row in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > ins
+INSERT   INSTALL
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into pruebas values(6, "xxxx"),(7, "rrrr"), (8, "gggg");
+Query OK, 3 rows affected (0.0065 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from pruebas;
++----+------------+
+| id | nombre     |
++----+------------+
+|  5 | HOLA MUNDO |
+|  6 | xxxx       |
+|  7 | rrrr       |
+|  8 | gggg       |
++----+------------+
+4 rows in set (0.0008 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table bitacora(id int key auto_increment, id_modificado int, tabla varchar(50), accion varchar(50));
+Query OK, 0 rows affected (0.0226 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > drop table bitacora;
+Query OK, 0 rows affected (0.0362 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > create table bitacora(id int key auto_increment, id_modificado int, tabla varchar(50), accion varchar(20));
+Query OK, 0 rows affected (0.0408 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc pruebas;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0022 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from pruebas;
++----+------------+
+| id | nombre     |
++----+------------+
+|  5 | HOLA MUNDO |
+|  6 | xxxx       |
+|  7 | rrrr       |
+|  8 | gggg       |
++----+------------+
+4 rows in set (0.0010 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > delete from pruebas where id = 5;
+Query OK, 1 row affected (0.0083 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from bitacora;
++----+---------------+---------+--------+
+| id | id_modificado | tabla   | accion |
++----+---------------+---------+--------+
+|  1 |             5 | pruebas | delete |
++----+---------------+---------+--------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > delete from pruebas;
+Query OK, 3 rows affected (0.0097 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from pruebas;
+Empty set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > select * from bitacora;
++----+---------------+---------+--------+
+| id | id_modificado | tabla   | accion |
++----+---------------+---------+--------+
+|  1 |             5 | pruebas | delete |
+|  2 |             6 | pruebas | delete |
+|  3 |             7 | pruebas | delete |
+|  4 |             8 | pruebas | delete |
++----+---------------+---------+--------+
+4 rows in set (0.0006 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > desc pruebas;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| id     | int         | YES  |     | NULL    |       |
+| nombre | varchar(50) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0028 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > insert into pruebas(id) value(1);
+Query OK, 1 row affected (0.0070 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL > SELECT * FROM pruebas;
++----+---------------+
+| id | nombre        |
++----+---------------+
+|  1 | XXXX111111000 |
++----+---------------+
+1 row in set (0.0007 sec)
+ MySQL  localhost:3306 ssl  tbd_e3  SQL >
